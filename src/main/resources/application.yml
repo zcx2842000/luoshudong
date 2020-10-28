@@ -1,9 +1,26 @@
 spring:
   datasource:
+    name: druidDataSource
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/lsdSpringCloud?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      url: jdbc:mysql://localhost:3306/lsdSpringCloud?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+      driver-class-name: com.mysql.jdbc.Driver
+      filters: stat,wall,config
+      max-active: 100
+      initial-size: 1
+      max-wait: 6000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-return: false
+      test-on-borrow: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 50
+      max-pool-prepared-statement-per-connection-size: 20
+    type: com.alibaba.druid.pool.DruidDataSource
 
 #mybatis-plus
 mybatis-plus:
